@@ -3,5 +3,5 @@
 
 
 
-(defn -main []
-  (println "Hello, World!"))
+(defn -main [])
+      
