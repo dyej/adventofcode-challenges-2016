@@ -11,6 +11,17 @@
              [4 5 6]
              [7 8 9]])
 
+(def key-mappings [{:U 1 :D 4 :R 2 :L 1}
+                   {:U 1 :D 2 :R 3 :L 4}
+                   {:U 1 :D 2 :R 3 :L 4}
+                   {:U 1 :D 2 :R 3 :L 4}
+                   {:U 1 :D 2 :R 3 :L 4}
+                   {:U 1 :D 2 :R 3 :L 4}
+                   {:U 1 :D 2 :R 3 :L 4}
+                   {:U 1 :D 2 :R 3 :L 4}
+                   {:U 1 :D 2 :R 3 :L 4}])
+                  
+
 (defn get-index [f coll]
   "general method to get index of element in collection coll that satisfies function f"
   (count (take-while (complement f) coll)))
@@ -23,12 +34,7 @@
 (defn next-key
   ""
   [move current-key]
-  (cond 
-    (< -1 0) "negative"
-    (> 1 0) "positive"
-    :else "zero")) 
-  
-
+  (get-in key-mappings [current-key (keyword move)]))
 
 (defn traverse-keypad
   "takes input string and current code and travels to the correct key on keypad"
@@ -51,7 +57,7 @@
   "Expects a list of input and returns bathroom code"
   [input]
   (loop [remaining-input input
-         code [0 0 0 0 0]]
+         code [5 0 0 0 0]]
     (if (empty? remaining-input)
       code
       (let [[part & remaining] remaining-input]
